@@ -1,0 +1,569 @@
+<%-include('../layouts/header')%>
+
+    <div class="page-wrapper">
+      <header class="header">
+        <% if(typeof userData !=="undefined"){%>        
+          <%-include('logeduser')%>
+        <%}else{%>
+          <%-include('nouser')%>
+        <%}%>
+
+        <div class="header-middle sticky-header">
+          <div class="container">
+            <div class="header-left">
+              <button class="mobile-menu-toggler">
+                <span class="sr-only">Toggle mobile menu</span>
+                <i class="icon-bars"></i>
+              </button>
+
+              <a href="/" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: black;">Spy.steps
+
+              </a>
+
+              <nav class="main-nav">
+                <ul class="menu sf-arrows">
+                  <li class="megamenu-container active">
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/categories" class="sf-with-ul">Categories</a>
+                    <ul>
+                      <%
+                        for(let i=0;i<categories.length;i++){%>
+                          <li><a href="/categorywise?id=<%=categories[i]._id%>"><%= categories[i].name%></a></li>                          
+                        <%}            
+                      %>                       
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/products" class="">Products</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="/contact">Contact Us</a>
+                  </li>
+                </ul>
+                <!-- End .menu -->
+              </nav>
+              <!-- End .main-nav -->
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right">
+              <div class="header-search">
+                <a href="#" class="search-toggle" role="button" title="Search"
+                  ><i class="icon-search"></i
+                ></a>
+                <form action="/search" method="get" id="search-form">
+                  <div class="header-search-wrapper">
+                    <label for="q" class="sr-only">Search</label>
+                    <input
+                      type="search"
+                      class="form-control"
+                      name="search"
+                      id="search-input"
+                      placeholder="Search in..."
+                      required
+                    />
+                  </div>
+                  <!-- End .header-search-wrapper -->
+                </form>
+              </div>
+              <!-- End .header-search -->
+              <div class="dropdown compare-dropdown">
+                <a
+                  href="/wishlist"
+                  class="dropdown-toggle"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                  title="Wishlist"
+                  aria-label="Wishlist"
+                >
+                  <i class="icon-heart-o"></i>
+                </a>
+              </div>
+              <!-- End .compare-dropdown -->
+
+              <div class="dropdown cart-dropdown">
+                <a
+                  href="/cart"
+                  class="dropdown-toggle"
+                  role="button"
+                  
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                >
+                  <i class="icon-shopping-cart"></i>
+                  <span class="cart-count">2</span>
+                </a>                
+              </div>
+              <!-- End .cart-dropdown -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-middle -->
+      </header>
+      <!-- End .header -->
+
+      <main class="main">
+        <div
+          class="page-header text-center"
+          style="background-image: url('assets/images/page-header-bg.jpg')"
+        >
+          <div class="container">
+            <h1 class="page-title">My Account<span>Shop</span></h1>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+               <a href="/account"> My Account </a>
+              </li>
+            </ol>
+          </div>
+          <!-- End .container -->
+        </nav>
+        <!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+          <div class="dashboard">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-lg-9">
+                  <div >                   
+                    <div
+                      class="tab-pane "
+                      id="tab-account"
+                      role="tabpanel"
+                      aria-labelledby="tab-account-link"
+                    >
+                      <form action="" method="post">                 
+
+                        <label>Full Name *</label>
+                        <input type="text" class="form-control" name="fullName" id="fullName" value="<%=address.address[0].fullName%>"/>                        
+                        <div><span id="fullName-error" style="color: red"></span></div>
+
+                        <label>Mobile No *</label>
+                        <input type="text" class="form-control" name="number" id="number" value="<%=address.address[0].number%>" />
+                        <div><span id="number-error" style="color: red"></span></div>
+
+                        <label>House *</label>
+                        <input type="text" class="form-control" name="house" id="house" value="<%=address.address[0].house%>" />
+                        <div><span id="house-error" style="color: red"></span></div>
+
+                        <label>Street *</label>
+                        <input type="text" class="form-control" name="street" id="street" value="<%=address.address[0].street%>"/>
+                        <div><span id="street-error" style="color: red"></span></div>
+
+                        <label>Land mark </label>
+                        <input type="text" class="form-control" name="landMark" id="landMark" value="<%=address.address[0].landMark%>"/>
+                        <div><span id="landMark-error" style="color: red"></span></div>
+
+                        <label>City *</label>
+                        <input type="text" class="form-control" name="city" id="city" value="<%=address.address[0].city%>"/>
+                        <div><span id="city-error" style="color: red"></span></div>
+
+                        <label>State *</label>
+                        <input type="text" class="form-control" name="state" id="state" value="<%=address.address[0].state%>"/>
+                        <div><span id="state-error" style="color: red"></span></div>
+
+                        <label>Pincode *</label>
+                        <input type="text" class="form-control" name="pincode" id="pincode" value="<%=address.address[0].pincode%>"/> 
+                        <div><span id="pincode-error" style="color: red"></span></div>                       
+
+                        <button type="submit" class="btn btn-outline-primary-2" id="registerButton">
+                          <span>Edit Address</span>
+                          <i class="icon-long-arrow-right"></i>
+                        </button>
+                      </form>
+                    </div>
+                    <!-- .End .tab-pane -->
+                  </div>
+                </div>
+                <!-- End .col-lg-9 -->
+              </div>
+              <!-- End .row -->
+            </div>
+            <!-- End .container -->
+          </div>
+          <!-- End .dashboard -->
+        </div>
+        <!-- End .page-content -->
+      </main>
+      <!-- End .main -->
+
+      <footer class="footer">
+        <div class="footer-middle">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget widget-about">
+                  <img
+                    src="assets/images/logo.png"
+                    class="footer-logo"
+                    alt="Footer Logo"
+                    width="105"
+                    height="25"
+                  />
+                  <p>
+                    Praesent dapibus, neque id cursus ucibus, tortor neque
+                    egestas augue, eu vulputate magna eros eu erat.
+                  </p>
+
+                  <div class="social-icons">
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Facebook"
+                      ><i class="icon-facebook-f"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Twitter"
+                      ><i class="icon-twitter"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Instagram"
+                      ><i class="icon-instagram"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Youtube"
+                      ><i class="icon-youtube"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Pinterest"
+                      ><i class="icon-pinterest"></i
+                    ></a>
+                  </div>
+                  <!-- End .soial-icons -->
+                </div>
+                <!-- End .widget about-widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Useful Links</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="/about">About Molla</a></li>
+                    <li><a href="#">How to shop on Molla</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/contact">Contact us</a></li>
+                    <li><a href="/login">Log in</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Customer Service</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">Money-back guarantee!</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">My Account</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="/login">Sign In</a></li>
+                    <li><a href="/cart">View Cart</a></li>
+                    <li><a href="/wishlist">My Wishlist</a></li>
+                    <li><a href="#">Track My Order</a></li>
+                    <li><a href="#">Help</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+            </div>
+            <!-- End .row -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-middle -->
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="footer-copyright">
+              Copyright © <script>document.write(new Date().getFullYear());</script> Molla Store. All Rights Reserved.
+            </p>
+            <!-- End .footer-copyright -->
+            <figure class="footer-payments">
+              <img
+                src="assets/images/payments.png"
+                alt="Payment methods"
+                width="272"
+                height="20"
+              />
+            </figure>
+            <!-- End .footer-payments -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-bottom -->
+      </footer>
+      <!-- End .footer -->
+    </div>
+    <!-- End .page-wrapper -->
+    <button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
+      <i class="icon-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="/search" method="get" id="mobile-search-form" class="mobile-search">
+          <label for="mobile-search" class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control"
+            name="search"
+            id="mobile-search-input"
+            placeholder="Search in..."
+            required
+          />
+          <button class="btn btn-primary" type="submit">
+            <i class="icon-search"></i>
+          </button>
+        </form>
+
+        <nav class="mobile-nav">
+          <ul class="mobile-menu">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/categories">Categories</a>
+              <ul>
+                <%
+                  for(let i=0;i<categories.length;i++){%>
+                    <li><a href=""><%= categories[i].name%></a></li>                          
+                  <%}            
+                %>
+                  <li><a href="blog.html">Classic</a></li>
+                  <li><a href="blog-listing.html">Listing</a></li>                  
+              </ul>
+            </li>
+            <li>
+              <a href="/products" class="">Products</a>              
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/contact">Contact Us</a>
+            </li>
+            <li>
+              <a href="/wishlist">Wishlist</a>
+            </li>
+            <li>
+              <a href="/cart">Add to Cart</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End .mobile-nav -->
+
+        <div class="social-icons">
+          <a href="#" class="social-icon" target="_blank" title="Facebook"
+            ><i class="icon-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Twitter"
+            ><i class="icon-twitter"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Instagram"
+            ><i class="icon-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Youtube"
+            ><i class="icon-youtube"></i
+          ></a>
+        </div>
+        <!-- End .social-icons -->
+      </div>
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+    <script>
+      const fullName = document.getElementById("fullName");
+      const number = document.getElementById("number");
+      const house = document.getElementById("house");
+      const street = document.getElementById("street");
+      const landMark = document.getElementById("landMark");
+      const city = document.getElementById("city");
+      const state = document.getElementById("state");
+      const pincode = document.getElementById("pincode");
+
+      const fullNameError = document.getElementById("fullName-error");
+      const numberError = document.getElementById("number-error");
+      const houseError = document.getElementById("house-error");
+      const streetError = document.getElementById("street-error");
+      const landMarkError = document.getElementById("landMark-error");
+      const cityError = document.getElementById("city-error");
+      const stateError = document.getElementById("state-error");
+      const pincodeError = document.getElementById("pincode-error");
+
+      const namePattern = /^(.|\s)*[a-zA-Z]+(.|\s)*$/ ; 
+      const numberPattern = /^\d{10}$/;
+      const pincodePattern = /^\d{6}$/;
+
+      const fullNameFunction = () => {
+        if (!namePattern.test(fullName.value)) {
+          fullNameError.textContent = "Invalid name";
+          return false;
+        } else {
+          fullNameError.textContent = "";
+          return true;
+        }
+      };
+
+      const numberFunction = () => {
+        if (!numberPattern.test(number.value)) {
+          numberError.textContent = "Please add Valid no";
+          return false;
+        } else {
+          numberError.textContent = "";
+          return true;
+        }
+      };
+      const houseFunction = () => {
+        if (!namePattern.test(house.value)) {
+          houseError.textContent = "Invalid name";
+          return false;
+        } else {
+          houseError.textContent = "";
+          return true;
+        }
+      };
+
+      const streetFunction = () => {
+        if (!namePattern.test(street.value)) {
+          streetError.textContent = "Invalid name";
+          return false;
+        } else {
+          streetError.textContent = "";
+          return true;
+        }
+      };
+      const landMarkFunction = () => {
+        if (!namePattern.test(landMark.value)) {
+          landMarkError.textContent = "Invalid name";
+          return false;
+        } else {
+          landMarkError.textContent = "";
+          return true;
+        }
+      };
+
+      const cityFunction = () => {
+        if (!namePattern.test(city.value)) {
+          cityError.textContent = "Invalid name";
+          return false;
+        } else {
+          cityError.textContent = "";
+          return true;
+        }
+      };
+
+      const stateFunction = () => {
+        if (!namePattern.test(state.value)) {
+          stateError.textContent = "Invalid name";
+          return false;
+        } else {
+          stateError.textContent = "";
+          return true;
+        }
+      };
+      const pincodeFunction = () => {
+        if (!pincodePattern.test(pincode.value)) {
+          pincodeError.textContent = "Invalid Pincode";
+          return false;
+        } else {
+          pincodeError.textContent = "";
+          return true;
+        }
+      };
+
+      fullName.addEventListener("input", fullNameFunction);
+      number.addEventListener("input", numberFunction);
+      house.addEventListener("input", houseFunction);
+      street.addEventListener("input", streetFunction);
+      landMark.addEventListener("input", landMarkFunction);
+      city.addEventListener("input", cityFunction);
+      state.addEventListener("input", stateFunction);
+      pincode.addEventListener("input", pincodeFunction);
+
+      let isFormValid = false;
+      const formFunctions = [
+        fullNameFunction,
+        numberFunction,
+        houseFunction,
+        streetFunction,
+        cityFunction,
+        stateFunction,
+        pincodeFunction
+      ];
+      document
+        .getElementById("registerButton")
+        .addEventListener("click", (event) => {
+          if (formFunctions.every((fn) => fn())) {
+            isFormValid = true;
+          }
+          if (!isFormValid) {
+            event.preventDefault();
+            alert("Please fill all the details");
+          } else {
+            form.submit();
+          }
+        });
+    </script> 
+
+<%-include('../layouts/footer')%>   

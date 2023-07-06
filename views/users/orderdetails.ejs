@@ -1,0 +1,612 @@
+<%-include('../layouts/header')%>
+<style>
+
+  .main{
+      max-width: 100%;
+      padding: 20px;
+      background-color: #e7862b;
+    box-shadow: 0 0 10px rgba(19, 17, 17, 0.377);
+  }
+  
+  
+  .profile {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .profile p {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .profile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profile li {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .profile li strong {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  </style>
+
+<div class="page-wrapper">
+  <header class="header">
+    <% if(typeof userData !=="undefined"){%>        
+      <%-include('logeduser')%>
+    <%}else{%>
+      <%-include('nouser')%>
+    <%}%>
+
+    <div class="header-middle sticky-header">
+      <div class="container">
+        <div class="header-left">
+          <button class="mobile-menu-toggler">
+            <span class="sr-only">Toggle mobile menu</span>
+            <i class="icon-bars"></i>
+          </button>
+
+          <a href="/" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: black;">Spy.steps
+
+          </a>
+
+          <nav class="main-nav">
+            <ul class="menu sf-arrows">
+              <li class="megamenu-container active">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/categories" class="sf-with-ul">Categories</a>
+                
+              </li>
+              <li>
+                <a href="/products" class="">Products</a>
+              </li>
+              
+              <li>
+                <a href="/about">About Us</a>
+              </li>
+              <li>
+                <a href="/contact">Contact Us</a>
+              </li>
+            </ul>
+            <!-- End .menu -->
+          </nav>
+          <!-- End .main-nav -->
+        </div>
+        <!-- End .header-left -->
+
+        <div class="header-right">
+          <div class="header-search">
+            <a href="#" class="search-toggle" role="button" title="Search"
+              ><i class="icon-search"></i
+            ></a>
+            <form action="/search" method="get" id="search-form">
+              <div class="header-search-wrapper">
+                <label for="q" class="sr-only">Search</label>
+                <input
+                  type="search"
+                  class="form-control"
+                  name="search"
+                  id="search-input"
+                  placeholder="Search in..."
+                  required
+                />
+              </div>
+              <!-- End .header-search-wrapper -->
+            </form>
+          </div>
+          <!-- End .header-search -->
+          <div class="dropdown compare-dropdown">
+            <a
+              href="/wishlist"
+              class="dropdown-toggle"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-display="static"
+              title="Wishlist"
+              aria-label="Wishlist"
+            >
+              <i class="icon-heart-o"></i>
+            </a>
+          </div>
+          <!-- End .compare-dropdown -->
+
+          <div class="dropdown cart-dropdown">
+            <a
+              href="/cart"
+              class="dropdown-toggle"
+              role="button"
+              
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-display="static"
+            >
+              <i class="icon-shopping-cart"></i>
+              <span class="cart-count">2</span>
+            </a>                
+          </div>
+          <!-- End .cart-dropdown -->
+        </div>
+        <!-- End .header-right -->
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .header-middle -->
+  </header>
+  <!-- End .header -->
+  <main>
+    <div class="container mt-5">
+      <div class="mb-4">
+        <a href="/orders" style="font-size: medium;font-weight: 300;"><i class="icon-long-arrow-left"></i>Back to Orders</a>
+        <h3 style="text-align: center;"><u>Order Summary</u></h3>
+      </div>
+      <%order.forEach(function(orderItem){%>
+        <div class="d-flex justify-content-between h5" >
+          <div>Order Id : <span style="font-size: medium;"><%=orderItem._id%></span></div>
+        </div>
+        <div class="d-flex justify-content-between mt-3 h5">       
+          <!-- <div>Date : <span style="font-size: medium;"><%=orderItem.createdAt%></span></div> -->
+          <div>Date : <span style="font-size: medium;"><%=orderItem.orderDate%></span></div>
+          <% if (orderItem.payment==='COD'|| orderItem.payment==='wallet') { %>
+            <div>Mode of Payment : <span style="font-size: medium;"><%=orderItem.payment%></span> </div>              
+          <%} else { %>
+            <div>Mode of Payment : <span style="font-size: medium;">Online</span></div>
+          <% } %>  
+        </div>
+        <div class="w-25 justify-content-between mt-5">
+         <h5>Shipping Address :</h5> 
+          <span style="font-weight: normal;"><%=orderItem.address%> </span> 
+        </div> 
+      <%})%>     
+    </div>
+    <div class="container mt-5">
+      <table class="table table-mobile">
+        <thead>
+          <tr>
+            <th style="font-size: large;">Product</th>
+            <th class="text-center" style="font-size: large;">Unit Price</th>
+            <th class="text-center" style="font-size: large;">Quantity</th>             
+            <th class="text-center" style="font-size: large;" rowspan="2">Total</th> 
+            <!-- <th class="text-center" style="font-size: large;" rowspan="2">Amount Paid</th>  -->
+          </tr>
+        </thead>
+        <tbody>          
+          <%order.forEach(function(orderItem){%>
+            <%orderItem.items.forEach(function(productItem,index){%>              
+              <tr id="">
+                <td class="product-col">
+                  <div class="product">
+                    <figure class="product-media">
+                      <a href="#">
+                        <img
+                          src="/productImages/<%=productItem.items[0].image[0]%>"
+                          alt="Product image"
+                          style="width: 60px; height: 60px;"
+                        />
+                      </a> 
+                    </figure>
+                    <h3 class="product-title ">
+                      <%=productItem.items[0].name%>
+                    </h3>                
+                  </div>              
+                </td>
+                <td class="price-col text-center">Rs. <%=productItem.items[0].price%></td>
+                <td class="stock-col text-center">
+                  <%=productItem.quantity%>
+                </td>  
+                <%if(index===0){%>
+                  <td class="price-col text-success h2 text-center" rowspan="<%=orderItem.items.length%>">Rs. <%=orderItem.totalPrice%></td>
+                  <!-- <td class="price-col text-success h2 text-center" rowspan="<%=orderItem.items.length%>">Rs. <%=orderItem.balanceTotal%></td> -->
+                <%}%>
+              </tr>
+            <%})%> 
+            <%})%>       
+        </tbody>          
+      </table>             
+    <!-- </div> -->
+    <%order.forEach(function(orderItem){%>
+      <div class= "h5">
+        Order Status : <span id="order-status-<%=orderItem._id%>" style="font-size: medium;"><%=orderItem.orderStatus%></span>
+      </div>
+    <div class="d-flex justify-content-center mb-2">
+      <%if(orderItem.orderStatus === "Delivered"){%>     
+        <button type="" value="" id="invoice" class="btn btn-success ">
+          <a href="/downloadInvoice?id=<%=orderItem._id%>" style="color: white;" >Download Invoice</a>                                        
+        </button>
+      <%}%> 
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <%if(orderItem.orderStatus === "Pending" || orderItem.orderStatus === "Processing" || orderItem.orderStatus === "Shipped"){%>        
+        <button type="button" id="cancelButton" value="" class="btn btn-danger" onclick="cancelOrder('<%=orderItem._id%>','<%=orderItem.totalPrice%>')">
+          Cancel Order
+        </button> 
+      <%}%>
+      <%if(orderItem.orderStatus === "Delivered"){%> 
+          <button type="button" id="returnButton" value="" class="btn btn-info" onclick="returnOrder('<%=orderItem._id%>','<%=orderItem.totalPrice%>')">
+            Return Order
+          </button>
+      <%}%>
+    </div>
+    <%})%>
+  </div>  
+  </main>
+  <footer class="footer">
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-lg-3">
+            <div class="widget widget-about">
+              <img
+                src="assets/images/logo.png"
+                class="footer-logo"
+                alt="Footer Logo"
+                width="105"
+                height="25"
+              />
+              <p>
+                Praesent dapibus, neque id cursus ucibus, tortor neque
+                egestas augue, eu vulputate magna eros eu erat.
+              </p>
+
+              <div class="social-icons">
+                <a
+                  href="#"
+                  class="social-icon"
+                  target="_blank"
+                  title="Facebook"
+                  ><i class="icon-facebook-f"></i
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon"
+                  target="_blank"
+                  title="Twitter"
+                  ><i class="icon-twitter"></i
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon"
+                  target="_blank"
+                  title="Instagram"
+                  ><i class="icon-instagram"></i
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon"
+                  target="_blank"
+                  title="Youtube"
+                  ><i class="icon-youtube"></i
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon"
+                  target="_blank"
+                  title="Pinterest"
+                  ><i class="icon-pinterest"></i
+                ></a>
+              </div>
+              <!-- End .soial-icons -->
+            </div>
+            <!-- End .widget about-widget -->
+          </div>
+          <!-- End .col-sm-6 col-lg-3 -->
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="widget">
+              <h4 class="widget-title">Useful Links</h4>
+              <!-- End .widget-title -->
+
+              <ul class="widget-list">
+                <li><a href="/about">About Molla</a></li>
+                <li><a href="#">How to shop on Molla</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="/contact">Contact us</a></li>
+                <li><a href="/login">Log in</a></li>
+              </ul>
+              <!-- End .widget-list -->
+            </div>
+            <!-- End .widget -->
+          </div>
+          <!-- End .col-sm-6 col-lg-3 -->
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="widget">
+              <h4 class="widget-title">Customer Service</h4>
+              <!-- End .widget-title -->
+
+              <ul class="widget-list">
+                <li><a href="#">Payment Methods</a></li>
+                <li><a href="#">Money-back guarantee!</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Terms and conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+              <!-- End .widget-list -->
+            </div>
+            <!-- End .widget -->
+          </div>
+          <!-- End .col-sm-6 col-lg-3 -->
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="widget">
+              <h4 class="widget-title">My Account</h4>
+              <!-- End .widget-title -->
+
+              <ul class="widget-list">
+                <li><a href="/login">Sign In</a></li>
+                <li><a href="/cart">View Cart</a></li>
+                <li><a href="/wishlist">My Wishlist</a></li>
+                <li><a href="#">Track My Order</a></li>
+                <li><a href="#">Help</a></li>
+              </ul>
+              <!-- End .widget-list -->
+            </div>
+            <!-- End .widget -->
+          </div>
+          <!-- End .col-sm-6 col-lg-3 -->
+        </div>
+        <!-- End .row -->
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .footer-middle -->
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copyright">
+          Copyright © <script>document.write(new Date().getFullYear());</script> Molla Store. All Rights Reserved.
+        </p>
+        <!-- End .footer-copyright -->
+        <figure class="footer-payments">
+          <img
+            src="assets/images/payments.png"
+            alt="Payment methods"
+            width="272"
+            height="20"
+          />
+        </figure>
+        <!-- End .footer-payments -->
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .footer-bottom -->
+  </footer>
+  <!-- End .footer -->
+</div>
+<!-- End .page-wrapper -->
+<button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
+  <i class="icon-arrow-up"></i>
+</button>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div>
+<!-- End .mobil-menu-overlay -->
+
+<div class="mobile-menu-container">
+  <div class="mobile-menu-wrapper">
+    <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+    <form action="/search" method="get" id="mobile-search-form" class="mobile-search">
+      <label for="mobile-search" class="sr-only">Search</label>
+      <input
+        type="search"
+        class="form-control"
+        name="search"
+        id="mobile-search-input"
+        placeholder="Search in..."
+        required
+      />
+      <button class="btn btn-primary" type="submit">
+        <i class="icon-search"></i>
+      </button>
+    </form>
+
+    <nav class="mobile-nav">
+      <ul class="mobile-menu">
+        <li class="active">
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories">Categories</a>
+         
+        </li>
+        <li>
+          <a href="/products" class="">Products</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li>
+          <a href="/contact">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- End .mobile-nav -->
+
+    <div class="social-icons">
+      <a href="#" class="social-icon" target="_blank" title="Facebook"
+        ><i class="icon-facebook-f"></i
+      ></a>
+      <a href="#" class="social-icon" target="_blank" title="Twitter"
+        ><i class="icon-twitter"></i
+      ></a>
+      <a href="#" class="social-icon" target="_blank" title="Instagram"
+        ><i class="icon-instagram"></i
+      ></a>
+      <a href="#" class="social-icon" target="_blank" title="Youtube"
+        ><i class="icon-youtube"></i
+      ></a>
+    </div>
+    <!-- End .social-icons -->
+  </div>
+  <!-- End .mobile-menu-wrapper -->
+</div>
+<!-- End .mobile-menu-container -->
+<script>
+  function cancelOrder(orderId,orderValue){
+    console.log(orderId);
+    console.log(orderValue);
+    Swal.fire({
+      title:'Are you sure to Cancel the Order?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!',      
+    })
+    .then((result)=>{
+      if(result.isConfirmed){
+        fetch('/cancelorder',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            orderId:orderId,
+            orderValue:orderValue            
+          })
+        })
+          .then((res)=>res.json())
+          .then((data)=>{
+            console.log(data);
+            const orderStatusElem = document.getElementById(`order-status-${orderId}`);console.log(orderStatusElem);
+            if(orderStatusElem){
+              orderStatusElem.textContent = data.orderStatus;
+            }
+            Swal.fire({
+              title: 'Order canceled',
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            }).then(()=>{
+              document.getElementById('cancelButton').style.display = 'none';
+            })
+          })                            
+          .catch(error=>console.error(error))          
+        }
+      })    
+  }
+</script>
+
+<!-- <script>
+  function returnOrder(orderId){
+    Swal.fire({
+      title:'Are you sure to Return the Order?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!',      
+    })
+    .then((result)=>{
+      if(result.isConfirmed){
+        fetch('/returnorder',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            orderId:orderId            
+          })
+        })
+          .then((res)=>res.json())
+          .then((data)=>{
+            console.log(data);
+            const orderStatusElem = document.getElementById(`order-status-${orderId}`);console.log(orderStatusElem);
+            if(orderStatusElem){
+              orderStatusElem.textContent = data.orderStatus;
+            }
+            Swal.fire({
+              title: 'Order Returned',
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            }).then(()=>{
+              document.getElementById('returnButton').style.display = 'none';
+            })
+          })                            
+          .catch(error=>console.error(error))          
+        }
+      })    
+  }
+</script> -->
+
+<script>
+  function returnOrder(orderId,orderValue){
+    Swal.fire({
+      title:'Are you sure to Return the Order?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!',      
+    })
+    .then((result)=>{
+      if(result.isConfirmed){
+        fetch('/returnorder',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            orderId:orderId,
+            orderValue:orderValue            
+          })
+        }).then((res)=>res.json())
+        .then((data)=>{
+          if(data.message === 'Item can not be returned'){
+            Swal.fire("Sorry! Return Period is over for this Order");
+          }
+          else{                   
+            console.log(data);
+            const orderStatusElem = document.getElementById(`order-status-${orderId}`);console.log(orderStatusElem);
+            if(orderStatusElem){
+              orderStatusElem.textContent = data.orderStatus;
+            }
+            Swal.fire({
+              title: 'Order Returned',
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            }).then(()=>{
+              document.getElementById('returnButton').style.display = 'none';
+              document.getElementById('invoice').style.display = 'none';
+            })
+          }
+        })                         
+          .catch(error=>console.error(error))          
+        }
+      })    
+  }
+</script>
+
+
+<%-include('../layouts/footer')%>    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

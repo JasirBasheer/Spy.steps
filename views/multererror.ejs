@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Error Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        margin-top: 50px;
+      }
+      
+      h1 {
+        font-size: 36px;
+        margin: 0 0 20px;
+        text-align: center;
+      }
+      
+      p {
+        font-size: 18px;
+        margin: 0 0 20px;
+        text-align: center;
+      }
+      
+      a {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+      }
+      
+      a:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Error Page</h1>
+      <p><%= message %></p>
+      <a href="/">Go to Home Page</a>
+    </div>
+  </body>
+</html>

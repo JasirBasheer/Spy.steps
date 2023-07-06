@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- molla/blog.html  22 Nov 2019 10:04:05 GMT -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Spy.steps - Bring The Good Cart To Life.</title>
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Molla - Bootstrap eCommerce Template" />
+    <meta name="author" content="p-themes" />
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/icons/site.html" />
+    <link
+      rel="mask-icon"
+      href="assets/images/icons/safari-pinned-tab.svg"
+      color="#666666"
+    />
+    <link rel="shortcut icon" href="assets/images/icons/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Molla" />
+    <meta name="application-name" content="Molla" />
+    <meta name="msapplication-TileColor" content="#cc9966" />
+    <meta
+      name="msapplication-config"
+      content="assets/images/icons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/plugins/owl-carousel/owl.carousel.css"
+    />
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header-top">
+          <div class="container">
+            <div class="header-left">
+              
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right">
+              <div class="header-dropdown">
+                <a href="#"><i class="icon-user"></i>My Account</a>
+                <div class="header-menu">
+                  <ul>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="/admin/logout">Logout</a></li>
+                  </ul>
+                </div>
+                <!-- End .header-menu -->
+              </div>
+              <!-- End .header-dropdown -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-top -->
+
+        <div class="header-middle sticky-header">
+          <div class="container">
+            <div class="header-left">
+              <button class="mobile-menu-toggler">
+                <span class="sr-only">Toggle mobile menu</span>
+                <i class="icon-bars"></i>
+              </button>
+
+              <a href="/admin" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: black;text-decoration: none;">Spy.steps
+
+              </a>
+
+              <nav class="main-nav">
+                <ul class="menu sf-arrows">
+                  <li class="megamenu-container">
+                    <a href="/admin/dashboard">Home</a>
+                  </li>
+                  <li>
+                    <a href="/admin/categorylist" class="sf-with-ul">Categories</a>
+                    <ul>
+                      <li><a href="/admin/categorylist">Category Lists</a></li>
+                      <li><a href="/admin/addcategory">Add New Category</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/admin/productslist" class="sf-with-ul">Products</a>
+                    <ul>
+                      <li>
+                        <a href="/admin/productslist">Product Lists</a>
+                      </li>
+                      <li>
+                        <a href="/admin/addproduct">Add New Product</a>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                  <li><a href="/admin/userslist">Users</a></li>
+                  <li><a href="/admin/orderslist">Orders</a></li>
+                </ul>
+                <!-- End .menu -->
+              </nav>
+              <!-- End .main-nav -->
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right">
+              <div class="header-search">
+                <a href="#" class="search-toggle" role="button" title="Search"
+                  ><i class="icon-search"></i
+                ></a>
+                <form action="#" method="get">
+                  <div class="header-search-wrapper">
+                    <label for="q" class="sr-only">Search</label>
+                    <input
+                      type="search"
+                      class="form-control"
+                      name="q"
+                      id="q"
+                      placeholder="Search in..."
+                      required
+                    />
+                  </div>
+                  <!-- End .header-search-wrapper -->
+                </form>
+              </div>
+              <!-- End .header-search -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-middle -->
+      </header>
+      <!-- End .header -->
+
+      <main class="main">
+        <div
+          class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17"
+          style="
+            background-image: url('assets/images/backgrounds/login-bg.jpg');
+          "
+        >
+          <div class="container">
+            <div class="form-box">
+              <div class="form-tab">
+                <ul class="nav nav-pills nav-fill" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="signin-tab-2"
+                      data-toggle="tab"
+                      href="#signin-2"
+                      role="tab"
+                      aria-controls="signin-2"
+                      aria-selected="false"
+                      >Edit Product</a
+                    >
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="signin-2"
+                    role="tabpanel"
+                    aria-labelledby="signin-tab-2"
+                  >
+                    <form action="" method="post" enctype="multipart/form-data">                       
+                      <div class="form-group">
+                        <label for="singin-email-2"
+                          >Name of the Product *</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="productName"
+                          name="productName"
+                          value="<%= product.name %>"
+                        />
+                      </div><span id="productName-error" style="color: red"></span>
+                      <!-- End .form-group -->
+                      <div class="form-group">
+                        <label for="singin-email-2"
+                          >Category *</label
+                        >
+                        <select name="productCategory" id="productCategory" class="form-control">
+
+                          <!-- <option value="<%=product.category%>"><%=product.category%></option>                                                   
+                          <% for(let i=0;i<categories.length;i++){ %>
+                            <option value="<%= categories[i]._id%>"><%= categories[i].name %></option>
+                            <%
+                          }%>   -->
+                          
+                          <% for(let i=0;i<categories.length;i++){ %>
+                            <% if(categories[i]._id.toString() === product.category.toString()) { %>
+                              <option value="<%= categories[i]._id%>" selected><%= categories[i].name %></option>
+                            <% } else { %>
+                              <option value="<%= categories[i]._id%>"><%= categories[i].name %></option>
+                            <% } %>
+                          <% } %> 
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="singin-password-2">Photo *</label>
+                        <img src="/productImages/<%=product.image[0]%>" alt="" style="width: 100px;height: 100px;" id="imgView">
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="productPhoto"
+                          name="productPhoto"
+                          accept="image/*"                          
+                          multiple
+                          onchange="viewImage(event)"
+                        />
+                      </div><span id="productPhoto-error" style="color: red"></span>
+                      <div class="form-group">
+                        <label for="singin-password-2">Price *</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="productPrice"
+                          name="productPrice"
+                          value="<%= product.price %>"
+                        />
+                      </div><span id="productPrice-error" style="color: red"></span>
+                      <div class="form-group">
+                        <label for="singin-password-2">No. of Stocks *</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="productStocks"
+                          name="productStocks"
+                          value="<%= product.noOfStocks %>"
+                        />
+                      </div><span id="productStocks-error" style="color: red"></span>
+                      <div class="form-group">
+                        <label for="singin-password-2">Description *</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="productDescription"
+                          name="productDescription"
+                          value="<%= product.description %>"
+                        />
+                      </div><span id="productDescription-error" style="color: red"></span>
+                      <!-- End .form-group -->
+                      <input type="hidden" name="id" value="<%= product._id %>">
+                      <div class="form-footer">
+                        <button type="submit" class="btn btn-outline-primary-2" id="updateButton">
+                          <span>Update</span>
+                          <i class="icon-long-arrow-right"></i>
+                        </button>
+                      </div>
+                      <!-- End .form-footer -->
+                    </form>
+                  </div>
+                  <!-- .End .tab-pane -->
+                </div>
+                <!-- End .tab-content -->
+              </div>
+              <!-- End .form-tab -->
+            </div>
+            <!-- End .form-box -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .login-page section-bg -->
+      </main>
+      <!-- End .main -->
+
+      <footer class="footer">
+        <!-- <div class="footer-middle">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget widget-about">
+                  <img
+                    src="assets/images/logo.png"
+                    class="footer-logo"
+                    alt="Footer Logo"
+                    width="105"
+                    height="25"
+                  />
+                  <p>
+                    Praesent dapibus, neque id cursus ucibus, tortor neque
+                    egestas augue, eu vulputate magna eros eu erat.
+                  </p>
+
+                  <div class="social-icons">
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Facebook"
+                      ><i class="icon-facebook-f"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Twitter"
+                      ><i class="icon-twitter"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Instagram"
+                      ><i class="icon-instagram"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Youtube"
+                      ><i class="icon-youtube"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Pinterest"
+                      ><i class="icon-pinterest"></i
+                    ></a>
+                  </div>
+                  
+                </div>
+                
+              </div>
+              
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Useful Links</h4>
+                  
+
+                  <ul class="widget-list">
+                    <li><a href="about.html">About Molla</a></li>
+                    <li><a href="#">How to shop on Molla</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="login.html">Log in</a></li>
+                  </ul>
+                  
+                </div>
+                
+              </div>
+              
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Customer Service</h4>
+                  
+
+                  <ul class="widget-list">
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">Money-back guarantee!</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                  
+                </div>
+                
+              </div>
+              
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">My Account</h4>
+                  
+
+                  <ul class="widget-list">
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="cart.html">View Cart</a></li>
+                    <li><a href="#">My Wishlist</a></li>
+                    <li><a href="#">Track My Order</a></li>
+                    <li><a href="#">Help</a></li>
+                  </ul>
+                  
+                </div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        </div> -->
+        
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="footer-copyright">
+              Copyright © <script>document.write(new Date().getFullYear());</script> Spy.steps Store. All Rights Reserved.
+            </p>
+            
+            <!-- <figure class="footer-payments">
+              <img
+                src="assets/images/payments.png"
+                alt="Payment methods"
+                width="272"
+                height="20"
+              />
+            </figure> -->
+            
+          </div>
+          
+        </div>
+        
+      </footer>
+      <!-- End .footer -->
+    </div>
+    <!-- End .page-wrapper -->
+    <button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
+      <i class="icon-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="#" method="get" class="mobile-search">
+          <label for="mobile-search" class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control"
+            name="mobile-search"
+            id="mobile-search"
+            placeholder="Search in..."
+            required
+          />
+          <button class="btn btn-primary" type="submit">
+            <i class="icon-search"></i>
+          </button>
+        </form>
+
+        <nav class="mobile-nav">
+          <ul class="mobile-menu">
+            <li class="active">
+              <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+              <a href="">Categories</a>
+              <ul>
+                <li><a href="/admin/categorylist">Category Lists</a></li>
+                <li><a href="/admin/addcategory">Add New Category</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="" class="sf-with-ul">Products</a>
+              <ul>
+                <li><a href="/admin/productslist">Product Lists</a></li>
+                <li><a href="/admin/addproduct">Add New Product</a></li>
+              </ul>
+            </li>
+           
+            <li>
+              <a href="/admin/userslist">Users</a>
+            </li>
+            <li>
+              <a href="/admin/orderslist">Orders</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End .mobile-nav -->
+
+        <div class="social-icons">
+          <a href="#" class="social-icon" target="_blank" title="Facebook"
+            ><i class="icon-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Twitter"
+            ><i class="icon-twitter"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Instagram"
+            ><i class="icon-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Youtube"
+            ><i class="icon-youtube"></i
+          ></a>
+        </div>
+        <!-- End .social-icons -->
+      </div>
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+   <script>
+      const productName = document.getElementById("productName");
+      const productPhoto = document.getElementById("productPhoto");
+      const productPrice = document.getElementById("productPrice");
+      const productStocks = document.getElementById("productStocks");
+      const productDescription = document.getElementById("productDescription");
+
+      const productNameError = document.getElementById("productName-error");
+      const productPhotoError = document.getElementById("productPhoto-error");
+      const productPriceError = document.getElementById("productPrice-error");
+      const productStocksError = document.getElementById("productStocks-error");
+      const productDescriptionError = document.getElementById("productDescription-error");
+
+      const productNamePattern = /^[A-Z][a-z]+(\s[A-Z][a-z]{0,25}){0,3}$/;
+      const productPricePattern = /^[\d.,]+$/;
+      const productStocksPattern = /^\d*$/;
+      const productDescriptionPattern = /^(.|\s)*[a-zA-Z]+(.|\s)*$/ ;      
+
+      const productNameFunction = () => {
+        if (!productNamePattern.test(productName.value)) {
+          productNameError.textContent = "Invalid name";
+          return false;
+        } else {
+          productNameError.textContent = "";
+          return true;
+        }
+      };      
+
+      const productPriceFunction = () => {
+        if (!productPricePattern.test(productPrice.value)) {
+          productPriceError.textContent = "Invalid";
+          return false;
+        } else {
+          productPriceError.textContent = "";
+          return true;
+        }
+      };
+      const productStocksFunction = () => {
+        if (!productStocksPattern.test(productStocks.value)) {
+          productStocksError.textContent = "Invalid";
+          return false;
+        } else {
+          productStocksError.textContent = "";
+          return true;
+        }
+      };
+      const productDescriptionFunction = () => {
+        if (!productDescriptionPattern.test(productDescription.value)) {
+          productDescriptionError.textContent = "Invalid";
+          return false;
+        } else {
+          productDescriptionError.textContent = "";
+          return true;
+        }
+      };     
+
+      productName.addEventListener("input", productNameFunction);
+      productPhoto.addEventListener("change", function(){
+        const file = productPhoto.files[0];
+        if(!file.type.startsWith("image/")){
+          productPhoto.value = "";
+          productPhotoError.textContent = "Choose Image File";
+          return;
+        }
+        else{
+          productPhotoError.textContent = "";
+        }
+      });
+      productPrice.addEventListener("input", productPriceFunction);
+      productStocks.addEventListener("input", productStocksFunction);
+      productDescription.addEventListener("input", productDescriptionFunction);
+      
+
+      let isFormValid = false;
+      const formFunctions = [
+        productNameFunction,
+        productPriceFunction,
+        productStocksFunction,
+        productDescriptionFunction        
+      ];
+      document
+        .getElementById("updateButton")
+        .addEventListener("click", (event) => {
+          if (formFunctions.every((fn) => fn())) {
+            isFormValid = true;
+          }
+          if (!isFormValid) {
+            event.preventDefault();
+            alert("Please fill all the details");
+          } else {
+            form.submit();
+          }
+        });
+    </script>
+
+    <script>
+      function viewImage(event){
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0]);
+      }
+    </script>
+    <!-- Plugins JS File -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/superfish.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    
+  </body>
+
+  <!-- molla/blog.html  22 Nov 2019 10:04:10 GMT -->
+</html>

@@ -1,0 +1,920 @@
+<%-include('../layouts/header')%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <div class="page-wrapper">
+      <header class="header">
+        <% if(typeof userData !=="undefined"){%>        
+          <%-include('logeduser')%>
+        <%}else{%>
+          <%-include('nouser')%>
+        <%}%>
+        <div class="header-middle sticky-header">
+          <div class="container">
+            <div class="header-left">
+              <button class="mobile-menu-toggler">
+                <span class="sr-only">Toggle mobile menu</span>
+                <i class="icon-bars"></i>
+              </button>
+
+              <a href="/" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: black;">Spy.steps
+
+              </a>
+
+              <nav class="main-nav">
+                <ul class="menu sf-arrows">
+                  <li class="megamenu-container active">
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/categories" class="sf-with-ul">Categories</a>
+                    <ul>
+                      <%
+                        for(let i=0;i<categories.length;i++){%>
+                          <li><a href="/categorywise?id=<%=categories[i]._id%>"><%= categories[i].name%></a></li>                          
+                        <%}            
+                      %>                                            
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/products" class="">Products</a>
+                  </li>
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="/contact">Contact Us</a>
+                  </li>
+                </ul>
+                <!-- End .menu -->
+              </nav>
+              <!-- End .main-nav -->
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right">
+              <div class="header-search">
+                <a href="#" class="search-toggle" role="button" title="Search"
+                  ><i class="icon-search"></i
+                ></a>
+                <form action="/search" method="get" id="search-form">
+                  <div class="header-search-wrapper">
+                    <label for="q" class="sr-only">Search</label>
+                    <input
+                      type="search"
+                      class="form-control"
+                      name="search"
+                      id="search-input"
+                      placeholder="Search in..."
+                      required
+                    />
+                  </div>
+                  <!-- End .header-search-wrapper -->
+                </form>
+              </div>
+              <!-- End .header-search -->
+              <div class="dropdown compare-dropdown">
+                <a
+                  href="/wishlist"
+                  class="dropdown-toggle"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                  title="Wishlist"
+                  aria-label="Wishlist"
+                >
+                  <i class="icon-heart-o"></i>
+                </a>
+              </div>
+              <!-- End .compare-dropdown -->
+
+              <div class="dropdown cart-dropdown">
+                <a
+                  href="/cart"
+                  class="dropdown-toggle"
+                  role="button"
+                  
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                >
+                  <i class="icon-shopping-cart"></i>
+                  <span class="cart-count">2</span>
+                </a>
+              </div>
+              <!-- End .cart-dropdown -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-middle -->
+      </header>
+      <!-- End .header -->
+
+      <main class="main">
+        <div
+          class="page-header text-center"
+          style="background-image: url('assets/images/page-header-bg.jpg')"
+        >
+          <div class="container">
+            <h1 class="page-title">Checkout<span>Shop</span></h1>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Shop</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Checkout
+              </li>
+            </ol>
+          </div>
+          <!-- End .container -->
+        </nav>
+        <!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+          <div class="checkout">
+            <div class="container">
+              <div class="checkout-discount">
+                <!-- <form action="#">
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    id="checkout-discount-input"
+                  />
+                  <label for="checkout-discount-input" class="text-truncate"
+                    >Have a coupon?
+                    <span>Click here to enter your code</span></label
+                  >                 
+                </form> -->
+                <!-- <form action=""> -->
+                  <div class="input-group">
+                    <input
+                      type="text" 
+                      id="coupon" name="coupon"
+                      class="form-control"
+                      required
+                      placeholder="coupon code"
+                    />                    
+                    <div class="input">
+                      <%if(cartId.isCouponApplied){%>
+                        <button
+                          class="btn btn-outline-primary-2 "
+                          
+                          onclick="removeCoupon('<%=cartId._id%>','<%=cartId.userId%>')"
+                        >Remove Coupon
+                        </button>
+                      <%}else{%>
+                        <button
+                          class="btn btn-outline-primary-2 "
+                          
+                          onclick="applyCoupon('<%=cartId._id%>')"
+                        >Apply Coupon
+                        </button>
+                      <%}%>
+                    </div>
+                    <!-- .End .input-group-append -->
+                  </div>
+                  <!-- End .input-group -->
+                <!-- </form> -->
+              </div>
+              <!-- End .checkout-discount -->
+              <form action="" method="post">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <h2 class="checkout-title">Billing Details</h2>
+                    <!-- End .checkout-title -->
+                    <a href="addcheckoutaddress" style="font-size: medium;">Add New Address</a><br><br>
+                    <h2 class="checkout-title">Choose Your Address</h2>
+                    <!-- <select name="" id="" class="form-control">
+                      <%for(let i=0;i<address.length;i++){%>
+                        <option value="<%=address[i]%>">
+                          <%=address[i].fullName +","%>
+                          <%=address[i].number +","%>
+                          <%=address[i].house +","%>
+                          <%=address[i].street +","%>
+                          <%=address[i].landMark +","%>
+                          <%=address[i].city +","%>
+                          <%=address[i].state +","%>
+                          <%=address[i].pincode +","%>
+                        </option>
+                      <%}%>                      
+                    </select> -->
+                    <%if(address.length> 0){%>
+                    <% for(let i=0; i<address.length; i++) { %>
+                      <div class="row">
+                        <div class="container"> 
+                          <div class="card card-dashboard">
+                      <div class="card-body">
+                        <label for="address<%= i %>">
+                        <input type="radio" name="address" id="address"
+                        value="<%= address[i].fullName %>,
+                        <%= address[i].number%>,
+                        <%= address[i].house%>, 
+                        <%= address[i].street%>,
+                        <%= address[i].landMark%>,
+                        <%= address[i].city%>,
+                        <%= address[i].state%>,
+                        <%= address[i].pincode%>"   <% if(i === 0) { %>checked<% } %>                      
+                         required>                        
+                          <%= address[i].fullName + ", " %> <br>
+                          <%= address[i].number + ", " %> <br>
+                          <%= address[i].house + ", " %> 
+                          <%= address[i].street + ", " %> <br>
+                          <%= address[i].landMark + ", " %> <br>
+                          <%= address[i].city + ", " %> <br>
+                          <%= address[i].state + ", " %> <br>
+                          <%= address[i].pincode %> <br><br>
+                          <a class="btn btn-success" href="/editcheckoutaddress?id=<%=address[i]._id%>" 
+                            >Edit</a>
+                          <a class="btn btn-danger" href="/deletecheckoutaddress?id=<%=address[i]._id%>" 
+                            onclick="event.preventDefault();
+                              Swal.fire({
+                                title: 'Are you surely want to delete?',
+                                icon: 'warning',
+                                showCancelButton:true,
+                                confirmButtonText:'Yes,delete it!',
+                                cancelButtonText:'Cancel'
+                              }).then((result)=>{
+                                if(result.isConfirmed){
+                                  location.href=this.href;
+                                }
+                              });" >Delete                              
+                          </a>
+                        </label>
+                      </div>
+                      </div>
+                        </div>
+                      </div>
+                    <% } %>
+                    <%}else{%>
+                      <div>
+                        <p style="color: red;">No Address Found. Please add Address.</p>
+                      </div>
+                    <%}%>
+                   
+                  </div>
+                  <!-- End .col-lg-9 -->
+                  <aside class="col-lg-3">
+                    <div class="summary">
+                      <h3 class="summary-title">Your Order</h3>
+                      <!-- End .summary-title -->
+
+                      <table class="table table-summary">
+                        <thead>
+                          <tr>
+                            <th>Product</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <%products.forEach((item,index)=>{%>
+                          <tr>
+                            <td>
+                              <a href="#"><%=item.items[0].name %></a>
+                            </td>
+                            <td>Rs. <%=productTotalPrice[index].total%></td>
+                          </tr>
+                          <%})%>
+                          
+                          <tr class="summary-subtotal">
+                            <%if(cartId.isCouponApplied){%>                              
+                              <td>Subtotal:</td>
+                              <td>Rs. <%=subTotalPrice[0].total %></td>
+                            <%}else{%>
+                              <td>Subtotal:</td>
+                              <!-- <td>Rs. <%=totalPrice[0].total %></td> -->
+                              <td id="totalprice" data-totalprice="<%=totalPrice[0].total %>">Rs. <%=totalPrice[0].total %></td>
+                            <%}%>
+                          </tr>
+                          <!-- End .summary-subtotal -->
+                          <tr>
+                            <td>Shipping:</td>
+                            <td>Free shipping</td>
+                          </tr>
+                          <tr>
+                            <%if(cartId.isCouponApplied){%>
+                              <td>Discount:</td>
+                              <td>Rs. -<%=discount%></td>
+                            <%}
+                            else{%>
+                              <td>Discount:</td>
+                              <td>Rs. 0</td>
+                            <%}%>
+                          </tr>
+                          
+
+                          <tr> 
+                            <%if(user.wallet > 0){%>  
+                              <%if(cartId.isCouponApplied){%>                          
+                              <td><input type="checkbox" name="wallet" id="wallet-checkbox" onclick="clickWallet('<%=totalAfterDiscount%>')"> Wallet Balance :</td>
+                              <%}else{%>                              
+                                <td><input type="checkbox" name="wallet" id="wallet-checkbox" onclick="clickWallet('<%=totalPrice[0].total%>')"> Wallet Balance :</td>
+                              <%}%>
+                              <input type="hidden" id="walletCheckbox" name="walletCheckbox" value="0">
+                              <input type="hidden" id="wallet-amount" name="walletAmount" value="<%=user.wallet%>">
+                              <td>Rs. <%=user.wallet%></td>    
+                            <%}%>                        
+                          </tr>
+                          
+
+                          <tr class="summary-total">
+                            <%if(cartId.isCouponApplied){%>
+                              <td>Total:</td>
+                              <input type="hidden" id="total" value="<%=totalAfterDiscount%>">
+                              <td id="totalvalue">Rs. <%=totalAfterDiscount %></td>
+                            <%}
+                            else{%>
+                              <td>Total:</td>
+                              <input type="hidden" id="total" value="<%=totalPrice[0].total%>">
+                              <td id="totalvalue">Rs. <%=totalPrice[0].total %></td>
+                            <%}%>
+                          </tr>   
+                          <!-- <tr>
+                            <td>Balance:</td>
+                            <td id="balance-amount">Rs. </td>                             
+                          </tr>                                                 -->
+                          <!-- End .summary-total -->
+                        </tbody>
+                      </table>
+                      <!-- End .table table-summary -->
+                     
+                      <div class="accordion-summary" id="accordion-payment">
+                        
+                        <div class="card">
+                          <div class="card-header" id="heading-3">
+                            <h2 class="card-title">                             
+                              <label>
+                                <input type="radio" name="payment" value="COD" required>
+                                Cash On Delivery
+                              </label><br><br>
+                            </h2>
+                          </div>                          
+                        </div>
+                        <!-- End .card -->
+
+                        <div class="card">
+                          <div class="card-header" id="heading-4">
+                            <h2 class="card-title">                             
+                              <label>
+                                <input type="radio" name="payment" value="online" required>
+                                Online Payment
+                              </label><br><br>
+                            </h2>
+                          </div>                          
+                        </div>
+                        <!-- End .card -->
+
+                        <div class="card">
+                          <div class="card-header" id="heading-4">
+                            <h2 class="card-title">
+                              <!-- <a
+                                class="collapsed"
+                                role="button"
+                                data-toggle="collapse"
+                                href="#collapse-4"
+                                aria-expanded="false"
+                                aria-controls="collapse-4"
+                              >
+                                Online Payment
+                               
+                              </a> -->
+                              <!-- <%if(user.wallet > 0){%>
+                              <label>
+                                <input type="hidden" id="walletBalance" value="<%=user.wallet%>">
+                                <input type="radio" name="payment" value="wallet" required>
+                                Wallet Balance : <%=user.wallet%>
+                              </label>
+                              <%}%> -->
+                              <!-- <%if(cartId.isCouponApplied){%>
+                                <%if(user.wallet > totalAfterDiscount){%>
+                                  <label>
+                                    <input type="radio" name="payment" value="wallet" required>
+                                    Wallet Balance : <%=user.wallet%>
+                                  </label>
+                                <%}}else{%>
+                                  <%if(user.wallet > totalPrice[0].total){%>
+                                    <label>
+                                      <input type="radio" name="payment" value="wallet" required>
+                                      Wallet Balance : <%=user.wallet%>
+                                    </label>                                  
+                              <%}}%>    -->
+                            </h2>
+                          </div>                          
+                        </div>                        
+                      </div>
+                      <!-- End .accordion -->
+
+                      <button
+                        type="submit"
+                        class="btn btn-outline-primary-2 btn-order btn-block"
+                        id="proceedButton" onclick="proceedCheckout()"
+                      >
+                        <span class="btn-text">Place Order</span>
+                        <span class="btn-hover-text">Proceed to Checkout</span>
+                      </button>
+                    </div>
+                    <!-- End .summary -->
+                  </aside>
+                  <!-- End .col-lg-3 -->
+                </div>
+                <!-- End .row -->
+              </form>
+            </div>
+            <!-- End .container -->
+          </div>
+          <!-- End .checkout -->
+        </div>
+        <!-- End .page-content -->
+      </main>
+      <!-- End .main -->
+
+      <footer class="footer">
+        <div class="footer-middle">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget widget-about">
+                  <img
+                    src="assets/images/logo.png"
+                    class="footer-logo"
+                    alt="Footer Logo"
+                    width="105"
+                    height="25"
+                  />
+                  <p>
+                    Praesent dapibus, neque id cursus ucibus, tortor neque
+                    egestas augue, eu vulputate magna eros eu erat.
+                  </p>
+
+                  <div class="social-icons">
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Facebook"
+                      ><i class="icon-facebook-f"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Twitter"
+                      ><i class="icon-twitter"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Instagram"
+                      ><i class="icon-instagram"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Youtube"
+                      ><i class="icon-youtube"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Pinterest"
+                      ><i class="icon-pinterest"></i
+                    ></a>
+                  </div>
+                  <!-- End .soial-icons -->
+                </div>
+                <!-- End .widget about-widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Useful Links</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="/about">About Molla</a></li>
+                    <li><a href="#">How to shop on Molla</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/contact">Contact us</a></li>
+                    <li><a href="/login">Log in</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Customer Service</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">Money-back guarantee!</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">My Account</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="/cart">View Cart</a></li>
+                    <li><a href="#">My Wishlist</a></li>
+                    <li><a href="#">Track My Order</a></li>
+                    <li><a href="#">Help</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+            </div>
+            <!-- End .row -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-middle -->
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="footer-copyright">
+              Copyright © <script>document.write(new Date().getFullYear());</script> Molla Store. All Rights Reserved.
+            </p>
+            <!-- End .footer-copyright -->
+            <figure class="footer-payments">
+              <img
+                src="assets/images/payments.png"
+                alt="Payment methods"
+                width="272"
+                height="20"
+              />
+            </figure>
+            <!-- End .footer-payments -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-bottom -->
+      </footer>
+      <!-- End .footer -->
+    </div>
+    <!-- End .page-wrapper -->
+    <button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
+      <i class="icon-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="#" method="get" id="mobile-search-form" class="mobile-search">
+          <label for="mobile-search" class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control"
+            name="search"
+            id="mobile-search-input"
+            placeholder="Search in..."
+            required
+          />
+          <button class="btn btn-primary" type="submit">
+            <i class="icon-search"></i>
+          </button>
+        </form>
+
+        <nav class="mobile-nav">
+          <ul class="mobile-menu">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/categories">Categories</a>
+              <ul>
+                <%
+                  for(let i=0;i<categories.length;i++){%>
+                    <li><a href=""><%= categories[i].name%></a></li>                          
+                  <%}            
+                %>
+                                  
+              </ul>
+            </li>
+            <li>
+              <a href="/products" class="">Products</a>              
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/contact">Contact Us</a>
+            </li>
+            <li>
+              <a href="/wishlist">Wishlist</a>
+            </li>
+            <li>
+              <a href="/cart">Add to Cart</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End .mobile-nav -->
+
+        <div class="social-icons">
+          <a href="#" class="social-icon" target="_blank" title="Facebook"
+            ><i class="icon-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Twitter"
+            ><i class="icon-twitter"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Instagram"
+            ><i class="icon-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Youtube"
+            ><i class="icon-youtube"></i
+          ></a>
+        </div>
+        <!-- End .social-icons -->
+      </div>
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+    <!--original razorpay and other code-->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+
+<script>
+  function applyCoupon(cartId){
+    let coupon =document.getElementById('coupon').value;
+    let totalPriceElem = document.getElementById('totalprice');
+    let totalPrice = totalPriceElem.dataset.totalprice;
+    console.log(coupon,'coupon');
+    console.log(cartId,'cartId');
+    console.log(totalPrice,'totalprice');
+    fetch('/applycoupon',{
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        couponName:coupon,
+        cartId:cartId,
+        totalPrice:totalPrice
+      })
+    })
+    .then((res)=>res.json())
+    .then((res)=>{
+      console.log(res);
+      if(res==='success'){
+        Swal.fire({
+          title: 'Coupon Applied',
+          text: 'Coupon has been applied successfully',
+          icon: 'success'
+        }).then(()=>{
+          window.location.reload();
+        })
+      }else if(res==='User Already Used the Coupon'){
+        Swal.fire({
+          title: 'Coupon Error',
+          text: 'User Already Used the Coupon',
+          icon: 'error'
+        });
+      }else if(res === 'Coupon Expired') {
+        Swal.fire({
+          title: 'Coupon Error',
+          text: 'Coupon Expired',
+          icon: 'error'
+        });
+      }else if(res === 'Invalid Coupon') {
+        Swal.fire({
+          title: 'Coupon Error',
+          text: 'Invalid Coupon. Please Verify Coupon Name.',
+          icon: 'error'
+        });
+      }
+      else if(res.message){
+        Swal.fire({
+          title: 'Coupon Error',
+          text: res.message,
+          icon: 'error'
+        });
+      }
+    })
+    .catch(error=>console.error(error))
+  }
+</script>
+
+<script>
+  function removeCoupon(cartId,userId){
+    Swal.fire({
+      title:'Are you sure?',
+      icon:'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Remove it!',
+      cancelButtonText: 'Cancel'
+    })
+    .then((willDelete)=>{
+      if(willDelete){
+        fetch('/removecoupon',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            cartId:cartId,
+            userId:userId
+          })
+        })
+          .then((res)=>res.json())
+          .then((res)=>window.location.reload())
+          .catch(error=>console.error(error))
+      }else{
+        //user clicked cancel so do nothing
+      }
+    });        
+  }
+</script>
+
+<script>
+  const walletCheckbox = document.getElementById('wallet-checkbox');
+  const totalValue = document.getElementById('totalvalue');
+  const totalInput = document.getElementById('total'); 
+  const walletAmountInput = document.getElementById('wallet-amount');
+
+  let walletCheckboxInput = document.getElementById('walletCheckbox'); 
+  // let walletCheckboxValue = walletCheckboxInput?walletCheckboxInput.value:'0';
+  let walletCheckboxValue = '0';
+  let walletAmount = 0;
+  if(walletCheckbox){
+    walletAmount = parseFloat(walletAmountInput.value); 
+  }
+
+  function updateTotal(){
+    const totalPrice = parseFloat(totalInput.value); 
+    //const walletAmount = parseFloat(walletAmountInput.value);  
+    if(walletAmount >= totalPrice){
+      totalValue.innerText = 'Rs. 0';
+      totalInput.value = 0; 
+      document.getElementsByName("payment")[0].removeAttribute("required");
+      document.getElementsByName("payment")[1].removeAttribute("required");    
+    }else{
+      const newTotalPrice = totalPrice - walletAmount; 
+      totalValue.innerText = `Rs. ${newTotalPrice}`;      
+      totalInput.value = newTotalPrice;  
+    }
+  }
+
+  let orderId = null; 
+  let updatedTotalAmount = parseFloat(totalInput.value);
+  console.log('totalaftercheckboxclickornot',updatedTotalAmount);
+
+  function clickWallet(totalPrice){
+    if(walletCheckbox.checked){
+      walletCheckboxInput.value = '1'; 
+      updateTotal();     
+      updatedTotalAmount = parseFloat(totalInput.value);  
+      walletCheckboxValue = walletCheckboxInput.value;
+      let radio = document.getElementsByName("payment");
+      for(let i = 0; i < radioButtons.length; i++){
+        radioButtons[i].checked = false;
+      }
+      orderId=null;
+
+    }else{      
+      walletCheckboxInput.value = '0' 
+      totalValue.innerText =`Rs. ${totalPrice}`;
+      totalInput.value = totalPrice;    
+      updatedTotalAmount = parseFloat(totalInput.value);  
+      walletCheckboxValue = walletCheckboxInput.value;      
+      let radio = document.getElementsByName("payment");
+      for(let i = 0; i < radioButtons.length; i++){
+        radioButtons[i].checked = false;
+      }
+      orderId=null;
+    }    
+  }
+ //let orderId = null; 
+
+  const radioButtons = document.getElementsByName('payment');
+  radioButtons.forEach(radioButton => {
+    radioButton.addEventListener('change', (event) => {
+      if (event.target.value === 'COD') {
+        orderId = null; // clear orderId for cash on delivery
+        document.getElementById('proceedButton').disabled = false;
+      } 
+      else {
+        document.getElementById('proceedButton').disabled = false; 
+        console.log('updatedtotal',updatedTotalAmount);
+        if (orderId == null) {
+          //creates new orderId everytime
+          var settings = {
+            url: "/create/orderId",
+            method: "POST",
+            timeout: 0,
+            headers: {
+              "Content-Type": "application/json",
+            },
+            data: JSON.stringify({
+              amount: Math.round(updatedTotalAmount * 100) , //CHANGE THE AMOUNT AS NEEDED
+            }),
+          };
+          $.ajax(settings).done(function (response) {
+            orderId = response.orderId;
+            console.log(orderId);
+          });
+        }
+        document.getElementById("proceedButton").onclick = function (e) {
+          if (orderId != null) {
+            var options = {
+              key: "rzp_test_4IyougYxLst47Y", // Enter the Key ID generated from the Dashboard
+              amount: Math.round(updatedTotalAmount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+              currency: "INR",
+              name: "Spy.steps",
+              description: "jewellery Store",
+              image: "",
+              order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+              handler: function (response) {
+                var settings = {
+                  url: "/api/payment/verify",
+                  method: "POST",
+                  timeout: 0,
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  data: JSON.stringify({ response }),
+                };
+                console.log(response)
+                $.ajax(settings).done(function (response) {
+                  placeOrder(orderId);
+                });
+              },
+              theme: {
+                color: "#3399cc",
+              },
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.on("payment.failed", function (response) {
+            });
+            rzp1.open();
+            e.preventDefault();
+          }
+        };
+      }
+    });
+  });   
+
+  function placeOrder(orderId) {    
+    let addressRadios = document.getElementsByName('address');
+    let selectedAddress = '';
+    for (let i = 0; i < addressRadios.length; i++) {
+      if (addressRadios[i].checked) {
+        selectedAddress = addressRadios[i].value;
+        break;
+      }
+    } 
+    fetch('/checkout', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        payment: orderId,
+        address: selectedAddress,
+        walletCheckbox:walletCheckboxValue
+      })
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.redirectUrl) {
+          window.location.href = res.redirectUrl;
+        }
+      })
+      .catch(error => console.error(error))
+  }
+</script>
+
+<%-include('../layouts/footer')%>    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

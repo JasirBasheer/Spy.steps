@@ -1,0 +1,648 @@
+<%-include('../layouts/header')%>
+
+    <div class="page-wrapper">
+      <header class="header">
+        <% if(typeof userData !=="undefined"){%>        
+          <%-include('logeduser')%>
+        <%}else{%>
+          <%-include('nouser')%>
+        <%}%>
+
+        <div class="header-middle sticky-header">
+          <div class="container">
+            <div class="header-left">
+              <button class="mobile-menu-toggler">
+                <span class="sr-only">Toggle mobile menu</span>
+                <i class="icon-bars"></i>
+              </button>
+
+              <a href="/" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: black;">Spy.steps
+
+              </a>
+
+              <nav class="main-nav">
+                <ul class="menu sf-arrows">
+                  <li class="megamenu-container">
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/categories" class="sf-with-ul">Categories</a>
+                    <ul>
+                      <%
+                        for(let i=0;i<categories.length;i++){%>
+                          <li><a href="/categorywise?id=<%=categories[i]._id%>"><%= categories[i].name%></a></li>                          
+                        <%}            
+                      %>                       
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/products" class="">Products</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">About Us</a>
+                  </li>
+                  <li>
+                    <a href="/contact">Contact Us</a>
+                  </li>
+                </ul>
+                <!-- End .menu -->
+              </nav>
+              <!-- End .main-nav -->
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right">
+              <div class="header-search">
+                <a href="#" class="search-toggle" role="button" title="Search"
+                  ><i class="icon-search"></i
+                ></a>
+                <form action="/search" method="get" id="search-form">
+                  <div class="header-search-wrapper">
+                    <label for="q" class="sr-only">Search</label>
+                    <input
+                      type="search"
+                      class="form-control"
+                      name="search"
+                      id="search-input"
+                      placeholder="Search in..."
+                      required
+                    />
+                  </div>
+                  <!-- End .header-search-wrapper -->
+                </form>
+              </div>
+              <!-- End .header-search -->
+              <div class="dropdown compare-dropdown">
+                <a
+                  href="/wishlist"
+                  class="dropdown-toggle"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                  title="Wishlist"
+                  aria-label="Wishlist"
+                >
+                  <i class="icon-heart-o"></i>
+                </a>
+              </div>
+              <!-- End .compare-dropdown -->
+
+              <div class="dropdown cart-dropdown">
+                <a
+                  href="/cart"
+                  class="dropdown-toggle"
+                  role="button"
+                  
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                >
+                  <i class="icon-shopping-cart"></i>
+                  <span class="cart-count">2</span>
+                </a>                
+              </div>
+              <!-- End .cart-dropdown -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-middle -->
+      </header>
+      <!-- End .header -->
+
+      <main class="main">
+        <div
+          class="page-header text-center"
+          style="background-image: url('assets/images/page-header-bg.jpg')"
+        >
+          <div class="container">
+            <h1 class="page-title">My Account<span>Shop</span></h1>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+               <a href="/account"> My Account</a>
+              </li>
+            </ol>
+          </div>
+          <!-- End .container -->
+        </nav>
+        <!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+          <div class="dashboard">
+            <div class="container">
+              <div class="row">
+                <aside class="col-md-4 col-lg-3">
+                  <ul
+                    class="nav nav-dashboard flex-column mb-3 mb-md-0"
+                    role="tablist"
+                  >
+                    <li class="nav-item">
+                      <a
+                        class="nav-link "
+                        id="tab-dashboard-link"
+                        
+                        href="/account"
+                        role="tab"
+                        aria-controls="tab-dashboard"
+                        aria-selected="true"
+                        >Dashboard</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link "
+                        id="tab-orders-link"
+                        
+                        href="/orders"
+                        role="tab"
+                        aria-controls="tab-orders"
+                        aria-selected="false"
+                        >Orders</a
+                      >
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="tab-downloads-link"
+                        data-toggle="tab"
+                        href="#tab-downloads"
+                        role="tab"
+                        aria-controls="tab-downloads"
+                        aria-selected="false"
+                        >Downloads</a
+                      >
+                    </li> -->
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        id="tab-address-link"
+                        data-toggle="tab"
+                        href="#tab-address"
+                        role="tab"
+                        aria-controls="tab-address"
+                        aria-selected="false"
+                        >Adresses</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="tab-account-link"
+                        
+                        href="/accountedit"
+                        role="tab"
+                        aria-controls="tab-account"
+                        aria-selected="false"
+                        >Account Details</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout">Sign Out</a>
+                    </li>
+                  </ul>
+                </aside>
+                <!-- End .col-lg-3 -->
+
+                <div class="col-md-8 col-lg-9">
+                  <div class="tab-content">
+                    <div
+                      class="tab-pane fade "
+                      id="tab-dashboard"
+                      role="tabpanel"
+                      aria-labelledby="tab-dashboard-link"
+                    >
+                      <p>
+                        Hello
+                        <span class="font-weight-bold text-dark" style="font-size: large;"><%= user.name%></span>                        
+                        <br />
+                        From your account dashboard you can view your
+                        <a
+                          href="#tab-orders"
+                          class="tab-trigger-link link-underline"
+                          >recent orders</a
+                        >, manage your
+                        <a href="#tab-address" class="tab-trigger-link"
+                          >shipping and billing addresses</a
+                        >, and
+                        <a href="#tab-account" class="tab-trigger-link"
+                          >edit your password and account details</a
+                        >.
+                      </p>
+                    </div>
+                    <!-- .End .tab-pane -->
+
+                    <!-- <div
+                      class="tab-pane fade"
+                      id="tab-orders"
+                      role="tabpanel"
+                      aria-labelledby="tab-orders-link"
+                    >
+                      <p>No order has been made yet.</p>
+                      <a href="category.html" class="btn btn-outline-primary-2"
+                        ><span>GO SHOP</span
+                        ><i class="icon-long-arrow-right"></i
+                      ></a>
+                    </div> -->
+                    <!-- .End .tab-pane -->
+
+                    <div
+                      class="tab-pane fade"
+                      id="tab-downloads"
+                      role="tabpanel"
+                      aria-labelledby="tab-downloads-link"
+                    >
+                      <p>No downloads available yet.</p>
+                      <a href="category.html" class="btn btn-outline-primary-2"
+                        ><span>GO SHOP</span
+                        ><i class="icon-long-arrow-right"></i
+                      ></a>
+                    </div>
+                    <!-- .End .tab-pane -->
+
+                    <div
+                      class="tab-pane fade show active"
+                      id="tab-address"
+                      role="tabpanel"
+                      aria-labelledby="tab-address-link"
+                    >
+                    <a href="/addnewaddress" style="font-size: medium;">Add New Address</a>
+                      <p>
+                        The following addresses will be used on the checkout
+                        page by default.
+                      </p>
+                      <%if(address.length> 0){%>
+                      <%for(let i=0;i<address.length;i++){%>                        
+                      <div class="row">
+                        <div class="container"> 
+                          <div class="card card-dashboard">
+                            <div class="card-body">
+                              <h3 class="card-title">Address</h3>                              
+                              <!-- End .card-title -->                              
+                              <p>
+                                <%=address[i].fullName%> <br>
+                                <%=address[i].number%> <br>
+                                <%=address[i].house + ","%>
+                                <%=address[i].street +","%>
+                                <%=address[i].landMark +","%>
+                                <%=address[i].city +","%>
+                                <%=address[i].state +","%>
+                                <%=address[i].pincode%> <br><br>
+                                <a class="btn btn-success" href="/editaddress?id=<%=address[i]._id%>" 
+                                  >Edit</a>
+
+                                <a class="btn btn-danger" href="/deleteaddress?id=<%=address[i]._id%>" 
+                                  onclick="event.preventDefault();
+                                    Swal.fire({
+                                      title: 'Are you surely want to delete?',
+                                      icon: 'warning',
+                                      showCancelButton:true,
+                                      confirmButtonText:'Yes,delete it!',
+                                      cancelButtonText:'Cancel'
+                                    }).then((result)=>{
+                                      if(result.isConfirmed){
+                                        location.href=this.href;
+                                      }
+                                    });">Delete   
+                                </a>
+                              </p>
+                            </div>
+                            <!-- End .card-body -->
+                          </div>
+                          <!-- End .card-dashboard -->
+                        </div>
+                        <!-- End .col-lg-6 -->
+
+                       <!-- <div class="col-lg-6">
+                          <div class="card card-dashboard">
+                            <div class="card-body">
+                              <h3 class="card-title">Shipping Address</h3>
+                              
+
+                              <p>
+                                You have not set up this type of address yet.<br />
+                                <a href="#">Edit <i class="icon-edit"></i></a>
+                              </p>
+                            </div>
+                            
+                          </div>
+                          
+                        </div>-->
+                        <!-- End .col-lg-6 -->
+                      </div>
+                      <%}%>
+                      <%}else{%>
+                        <div>
+                          <p style="color: red;">No Address Found. Please add Address.</p>
+                        </div>
+                        <%}%>
+                      <!-- End .row -->
+                    </div>
+                    <!-- .End .tab-pane -->
+
+                    <div
+                      class="tab-pane fade"
+                      id="tab-account"
+                      role="tabpanel"
+                      aria-labelledby="tab-account-link"
+                    >
+                      <form action="#">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <label>First Name *</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                          <!-- End .col-sm-6 -->
+
+                          <div class="col-sm-6">
+                            <label>Last Name *</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                          <!-- End .col-sm-6 -->
+                        </div>
+                        <!-- End .row -->
+
+                        <label>Display Name *</label>
+                        <input type="text" class="form-control" required />
+                        <small class="form-text"
+                          >This will be how your name will be displayed in the
+                          account section and in reviews</small
+                        >
+
+                        <label>Email address *</label>
+                        <input type="email" class="form-control" required />
+
+                        <label
+                          >Current password (leave blank to leave
+                          unchanged)</label
+                        >
+                        <input type="password" class="form-control" />
+
+                        <label
+                          >New password (leave blank to leave unchanged)</label
+                        >
+                        <input type="password" class="form-control" />
+
+                        <label>Confirm new password</label>
+                        <input type="password" class="form-control mb-2" />
+
+                        <button type="submit" class="btn btn-outline-primary-2">
+                          <span>SAVE CHANGES</span>
+                          <i class="icon-long-arrow-right"></i>
+                        </button>
+                      </form>
+                    </div>
+                    <!-- .End .tab-pane -->
+                  </div>
+                </div>
+                <!-- End .col-lg-9 -->
+              </div>
+              <!-- End .row -->
+            </div>
+            <!-- End .container -->
+          </div>
+          <!-- End .dashboard -->
+        </div>
+        <!-- End .page-content -->
+      </main>
+      <!-- End .main -->
+
+      <footer class="footer">
+        <div class="footer-middle">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget widget-about">
+                  <img
+                    src="assets/images/logo.png"
+                    class="footer-logo"
+                    alt="Footer Logo"
+                    width="105"
+                    height="25"
+                  />
+                  <p>
+                    Praesent dapibus, neque id cursus ucibus, tortor neque
+                    egestas augue, eu vulputate magna eros eu erat.
+                  </p>
+
+                  <div class="social-icons">
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Facebook"
+                      ><i class="icon-facebook-f"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Twitter"
+                      ><i class="icon-twitter"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Instagram"
+                      ><i class="icon-instagram"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Youtube"
+                      ><i class="icon-youtube"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon"
+                      target="_blank"
+                      title="Pinterest"
+                      ><i class="icon-pinterest"></i
+                    ></a>
+                  </div>
+                  <!-- End .soial-icons -->
+                </div>
+                <!-- End .widget about-widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Useful Links</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="/about">About Molla</a></li>
+                    <li><a href="#">How to shop on Molla</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/contact">Contact us</a></li>
+                    <li><a href="/login">Log in</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">Customer Service</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">Money-back guarantee!</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="widget">
+                  <h4 class="widget-title">My Account</h4>
+                  <!-- End .widget-title -->
+
+                  <ul class="widget-list">
+                    <li><a href="/login">Sign In</a></li>
+                    <li><a href="/cart">View Cart</a></li>
+                    <li><a href="/wishlist">My Wishlist</a></li>
+                    <li><a href="#">Track My Order</a></li>
+                    <li><a href="#">Help</a></li>
+                  </ul>
+                  <!-- End .widget-list -->
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-sm-6 col-lg-3 -->
+            </div>
+            <!-- End .row -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-middle -->
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="footer-copyright">
+              Copyright © <script>document.write(new Date().getFullYear());</script> Molla Store. All Rights Reserved.
+            </p>
+            <!-- End .footer-copyright -->
+            <figure class="footer-payments">
+              <img
+                src="assets/images/payments.png"
+                alt="Payment methods"
+                width="272"
+                height="20"
+              />
+            </figure>
+            <!-- End .footer-payments -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .footer-bottom -->
+      </footer>
+      <!-- End .footer -->
+    </div>
+    <!-- End .page-wrapper -->
+    <button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
+      <i class="icon-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="/search" method="get" id="mobile-search-form" class="mobile-search">
+          <label for="mobile-search" class="sr-only">Search</label>
+          <input
+            type="search"
+            class="form-control"
+            name="search"
+            id="mobile-search-input"
+            placeholder="Search in..."
+            required
+          />
+          <button class="btn btn-primary" type="submit">
+            <i class="icon-search"></i>
+          </button>
+        </form>
+
+        <nav class="mobile-nav">
+          <ul class="mobile-menu">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/categories">Categories</a>
+              <ul>
+                <%
+                  for(let i=0;i<categories.length;i++){%>
+                    <li><a href=""><%= categories[i].name%></a></li>                          
+                  <%}            
+                %>
+                  <li><a href="blog.html">Classic</a></li>
+                  <li><a href="blog-listing.html">Listing</a></li>                  
+              </ul>
+            </li>
+            <li>
+              <a href="/products" class="">Products</a>              
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/contact">Contact Us</a>
+            </li>
+            <li>
+              <a href="/wishlist">Wishlist</a>
+            </li>
+            <li>
+              <a href="/cart">Add to Cart</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End .mobile-nav -->
+
+        <div class="social-icons">
+          <a href="#" class="social-icon" target="_blank" title="Facebook"
+            ><i class="icon-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Twitter"
+            ><i class="icon-twitter"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Instagram"
+            ><i class="icon-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank" title="Youtube"
+            ><i class="icon-youtube"></i
+          ></a>
+        </div>
+        <!-- End .social-icons -->
+      </div>
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+    <%-include('../layouts/footer')%>    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

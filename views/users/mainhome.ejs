@@ -4,13 +4,16 @@
   margin-left: 91px;
   display: flex;
 }
+.faq-page{
+text-align: center;
+}
 .container1{
   margin-top: 31px;
-  margin-left: 405px;
+  margin-left: 445px;
 }
 .buttton {
   margin-top: 21px;
-  margin-left: 378px;
+  margin-left: 400px;
 }
 }
 
@@ -32,6 +35,77 @@
 .btn:hover{
  background-color: white;
 }
+
+
+
+
+
+
+
+/* faq qustions css */
+
+.faq-heading{
+    border-bottom: #777;
+    padding: 20px 60px;
+}
+.faq-container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+.har-line{
+  width: 60%;
+  margin: auto;
+  
+}
+/* Style the buttons that are used to open and close the faq-page body */
+.faq1-page {
+    /* background-color: #eee; */
+    color: #444;
+    cursor: pointer;
+    padding: 30px 20px;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+
+}
+.faq-body{
+    margin: auto;
+    /* text-align: center; */
+   width: 50%; 
+   padding: auto;
+   
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.act1ive,
+.faq-page:hover {
+    background-color: #F9F9F9;
+}
+
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.faq-page:after {
+    content: '▽  ';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+
+
 </style>
 
 <%-include('../layouts/header')%>
@@ -197,21 +271,18 @@
                     </figure>
                     <!-- End .slide-image -->                 
 
-                    <div class="intro-content">
+                    <!-- <div class="intro-content">
                       <h3 class="intro-subtitle">New Collection</h3>
-                      <!-- End .h3 intro-subtitle -->
                       <h1 class="intro-title text-white">
                         Women’s <br />Chains & Rings
                       </h1>
-                      <!-- End .intro-title -->
 
                       <div class="intro-text text-white">2023</div>
-                      <!-- End .intro-text -->
 
                       <a href="/categories" class="btn btn-primary">
                         <span>DISCOVER NOW</span>
                       </a>
-                    </div>
+                    </div> -->
                     <!-- End .intro-content -->
                   </div>
                   <!-- End .intro-slide -->
@@ -632,21 +703,61 @@
        
 
         <div class="container1"> <a href="/products" class="buttton btn btn-dark" class="containeerr" style="margin-top: 31px;margin-left: 105px;">
-          <span >DISCOVER MORE <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+          <span >View All <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
           </svg></span>
         </a>
-          <hr class="mt-4 mb-4" />
+        <br>
+        <br>
+
         </div>
         <!-- End .container -->
 
        
-
+<section id="faqqq">
         <div class="container">
           <hr class="mt-3 mt-xl-1 mb-0" />
+          <main> 
+            <h2 class="faq-heading text-center">FAQ'S</h2>
+            <section class="faq-container" style="font-size: small;font-weight: 100;cursor: pointer;" >
+                <div class="faq-one" >
+                    <!-- faq question -->
+                    <h6 class="faq-page">How to place an order? </h6>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>You can place an order by adding products to cart & make payment on your convenient mode on our website.</p>
+                    </div>
+                </div>
+                <hr class="har-line">
+                <div class="faq-two">
+                    <!-- faq question -->
+                    <h6 class="faq-page">Do you ship all over India?</h6>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Yes, We serve to any Pin code pan India, Even if you are at a remote location!</p>
+                    </div>
+                </div>
+                <hr class="har-line">
+                <div class="faq-three">
+                    <!-- faq question -->
+    <h6 class="faq-page">How do i make payment?</h6>
+                    <!-- faq answer -->
+                    <div class="faq-body ">
+                        <p>You can pay via UPI (Google Pay, PayTM, PhonePe etc..) / Netbanking / Credit & Debit Cards / Zero EMI (Sezzle)
+
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        <br>
+            <br>
+
           
         </div>
         <!-- End .container -->
+      </section>
 
        
 
@@ -768,10 +879,7 @@
                   <a href="/" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;color: rgb(255, 255, 255);margin: 0;padding: 0;">Spy.steps
 
                   <p>
-                    Praesent dapibus, neque id cursus ucibus, tortor neque
-                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat
-                    volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                    facilisis luctus, metus.
+                    Accessories like chains, rings, keychains, and earrings have the ability to enhance beauty. Chains can gracefully adorn the neck, adding elegance. Rings bring refinement to the hands. Keychains become stylish statements, reflecting personality. Earrings frame the face, harmonizing with features. Worn thoughtfully, these accessories magnify beauty and express individual style.
                   </p>
 
                   <div class="widget-about-info">
@@ -813,7 +921,7 @@
                   <ul class="widget-list">
                     <li><a href="/about">About Spy.steps</a></li>
                     <li><a href="#">How to shop on Spy.steps</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="/#faqqq">FAQ</a></li>
                     <li><a href="/contact">Contact us</a></li>
                     <li><a href="/login">Log in</a></li>
                   </ul>
@@ -998,16 +1106,37 @@
     </div>
     <!-- End .mobile-menu-container -->
 
-    <!--<script>
-      const searchForm = document.getElementById('search-form');
-      const searchInput = document.getElementById('search-input');
+    <script>
+      // const searchForm = document.getElementById('search-form');
+      // const searchInput = document.getElementById('search-input');
 
-      searchForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const searchQuery = searchInput.value;
-      window.location.href = `/products?search=${searchQuery}`;
-      });
-    </script>-->
+      // searchForm.addEventListener('submit', async (event) => {
+      // event.preventDefault();
+      // const searchQuery = searchInput.value;
+      // window.location.href = `/products?search=${searchQuery}`;
+      // });
+
+    
+var faq = document.getElementsByClassName("faq-page");
+var i;
+
+for (i = 0; i < faq.length; i++) {
+    faq[i].addEventListener("click", function () {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var body = this.nextElementSibling;
+        if (body.style.display === "block") {
+            body.style.display = "none";
+        } else {
+            body.style.display = "block";
+        }
+    });
+}
+    </script>
+    
 
 
 

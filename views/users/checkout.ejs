@@ -310,18 +310,7 @@
                           </tr>
                           
 
-                          <tr> 
-                            <%if(user.wallet > 0){%>  
-                              <%if(cartId.isCouponApplied){%>                          
-                              <td><input type="checkbox" name="wallet" id="wallet-checkbox" onclick="clickWallet('<%=totalAfterDiscount%>')"> Wallet Balance :</td>
-                              <%}else{%>                              
-                                <td><input type="checkbox" name="wallet" id="wallet-checkbox" onclick="clickWallet('<%=totalPrice[0].total%>')"> Wallet Balance :</td>
-                              <%}%>
-                              <input type="hidden" id="walletCheckbox" name="walletCheckbox" value="0">
-                              <input type="hidden" id="wallet-amount" name="walletAmount" value="<%=user.wallet%>">
-                              <td>Rs. <%=user.wallet%></td>    
-                            <%}%>                        
-                          </tr>
+                         
                           
 
                           <tr class="summary-total">
@@ -560,7 +549,7 @@
         <div class="footer-bottom">
           <div class="container">
             <p class="footer-copyright">
-              Copyright © <script>document.write(new Date().getFullYear());</script> Molla Store. All Rights Reserved.
+              Copyright © <script>document.write(new Date().getFullYear());</script> Spy.steps Store. All Rights Reserved.
             </p>
             <!-- End .footer-copyright -->
             <figure class="footer-payments">

@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.goto-support').on('click', function(e) {
-		e.preventDefault();
+		e.preventDefault();  
 		$('html, body').animate({scrollTop: $('.section-support').offset().top}, 1200);
 	});
 });

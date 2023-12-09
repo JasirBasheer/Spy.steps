@@ -72,11 +72,8 @@
                       
                   
                 </ul>
-                <!-- End .menu -->
               </nav>
-              <!-- End .main-nav -->
             </div>
-            <!-- End .header-left -->
 
             <div class="header-right">
               <div class="header-search">
@@ -95,10 +92,8 @@
                       required
                     />
                   </div>
-                  <!-- End .header-search-wrapper -->
                 </form>
               </div>
-              <!-- End .header-search -->
               <div class="dropdown compare-dropdown">
                 <a
                   href="/wishlist"
@@ -113,7 +108,6 @@
                   <i class="icon-heart-o"></i>
                 </a>
               </div>
-              <!-- End .compare-dropdown -->
 
               <div class="dropdown cart-dropdown">
                 <a
@@ -129,15 +123,10 @@
                   <span class="cart-count" id="cart-count">0</span>
                 </a>                
               </div>
-              <!-- End .cart-dropdown -->
             </div>
-            <!-- End .header-right -->
           </div>
-          <!-- End .container -->
         </div>
-        <!-- End .header-middle -->
       </header>
-      <!-- End .header -->
 
       <main class="main">
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -169,11 +158,8 @@
                 <i class="icon-angle-right"></i>
               </a>
             </nav> -->
-            <!-- End .pager-nav -->
           </div>
-          <!-- End .container -->
         </nav>
-        <!-- End .breadcrumb-nav -->
 
         <div class="page-content">
           <div class="container">
@@ -199,7 +185,6 @@
                             <i class="icon-arrows"></i>
                           </a>
                         </figure>
-                        <!-- End .product-main-image -->
 
                         <div
                           id="product-zoom-gallery"
@@ -252,11 +237,8 @@
                             />
                           </a> -->
                         </div>
-                        <!-- End .product-image-gallery -->
                       </div>
-                      <!-- End .product-gallery -->
                     </div>
-                    <!-- End .col-md-6 -->
 
                     <div class="col-md-6">
                       <div class="product-details product-details-sidebar">
@@ -276,7 +258,6 @@
                             >( 2 Reviews )</a
                           >
                         </div> -->
-                        <!-- End .rating-container -->
 
                         <div class="product-price">Rs.<%= product.price%></div>
                         <!-- End .product-price -->
@@ -284,7 +265,6 @@
                           <p><%= product.description%>                            
                           </p>
                         </div>
-                        <!-- End .product-content -->
 
                         <!-- <div class="details-filter-row details-row-size">
                           <label>Color:</label>
@@ -320,7 +300,6 @@
                             ><i class="icon-th-list"></i>size guide</a
                           >
                         </div> -->
-                        <!-- End .details-filter-row -->
 
                         <div class="product-details-action">
                           <div class="details-action-col">
@@ -356,7 +335,6 @@
                               <span>add to cart</span>
                             </a>
                           </div>
-                          <!-- End .details-action-col -->
 
                           <div class="details-action-wrapper" id="wishlist-container">
                             <!--<a
@@ -376,15 +354,12 @@
                               ><span>Add to Wishlist</span></a
                             >                            
                           </div>
-                          <!-- End .details-action-wrapper -->
                         </div>
-                        <!-- End .product-details-action -->
 
                         <div class="product-details-footer details-footer-col">
                           <div class="product-cat">
                             <span>Category: <%= categories.name %></span>                           
                           </div>
-                          <!-- End .product-cat -->
                           <%if(product.noOfStocks>0){%>
                             <div class="product-cat">
                               <p> Avalilability:<span style="color: green;"> In Stock</span> </p>                          
@@ -444,15 +419,10 @@
                             ></a>
                           </div> -->
                         </div>
-                        <!-- End .product-details-footer -->
                       </div>
-                      <!-- End .product-details -->
                     </div>
-                    <!-- End .col-md-6 -->
                   </div>
-                  <!-- End .row -->
                 </div>
-                <!-- End .product-details-top -->
 
                 <div class="product-details-tab">
                   <ul
@@ -614,7 +584,6 @@
                       </div>
                       
                     </div> -->
-                    <!-- .End .tab-pane -->
                     <div
                       class="tab-pane fade "
                       id="product-shipping-tab"
@@ -632,7 +601,6 @@
                       </div>
                       
                     </div>
-                    <!-- .End .tab-pane -->
                     <div
                       class="tab-pane fade show active"
                       id="product-review-tab"
@@ -662,11 +630,8 @@
                                   <%for(let j=0;j<product.reviews[i].rating;j++){%>
                                     <i class="fa-solid fa-star" style="color: goldenrod;"></i>
                                     <%}%>
-                                  <!-- End .ratings-val -->
                                 </div>
-                                <!-- End .ratings -->
                               </div>
-                              <!-- End .rating-container -->
                               
                             </div>
                             <!-- End .col -->
@@ -678,15 +643,10 @@
                                   <%=product.reviews[i].comment%>
                                 </p>
                               </div>
-                              <!-- End .review-content -->
 
-                              <!-- End .review-action -->
                             </div>
-                            <!-- End .col-auto -->
                           </div>
-                          <!-- End .row -->
                         </div>
-                        <!-- End .review -->
                         <%}%>
                         <%}else{%>
                           <div>
@@ -740,24 +700,17 @@
                           </div>
                           
                         </div> -->
-                        <!-- End .review -->
                       </div>
-                      <!-- End .reviews -->
                     </div>
-                    <!-- .End .tab-pane -->
                   </div>
-                  <!-- End .tab-content -->
                 </div>
-                <!-- End .product-details-tab -->
                 
               </div>
-              <!-- End .col-lg-9 -->
 
               <aside class="col-lg-3">
                 <div class="sidebar sidebar-product">
                   <div class="widget widget-products">
                     <h4 class="widget-title">Related Product</h4>
-                    <!-- End .widget-title -->
 
                     <div class="products">
                       <%if(relatedProducts.length>0){%>
@@ -779,20 +732,15 @@
                               ><%=relatedProducts[i].name%></a
                             >
                           </h5>
-                          <!-- End .product-title -->
                           <div class="product-price">
                             <span class="new-price">Rs.<%=relatedProducts[i].price%></span>                            
                           </div>
-                          <!-- End .product-price -->
                         </div>
-                        <!-- End .product-body -->
                       </div>
-                      <!-- End .product product-sm -->                      
                       <%}%>
                       <%}%>
                       
                     </div>
-                    <!-- End .products -->
 
                     <a href="/products" class="btn btn-outline-dark-3"
                       ><span>View More Products</span
@@ -817,17 +765,11 @@
                   </div> -->
                   <!-- End .widget -->
                 </div>
-                <!-- End .sidebar sidebar-product -->
               </aside>
-              <!-- End .col-lg-3 -->
             </div>
-            <!-- End .row -->
           </div>
-          <!-- End .container -->
         </div>
-        <!-- End .page-content -->
       </main>
-      <!-- End .main -->
 
       <footer class="footer">
         <div class="footer-middle">
@@ -879,34 +821,26 @@
                       ><i class="icon-pinterest"></i
                     ></a>
                   </div>
-                  <!-- End .soial-icons -->
                 </div>
-                <!-- End .widget about-widget -->
               </div>
-              <!-- End .col-sm-6 col-lg-3 -->
 
               <div class="col-sm-6 col-lg-3">
                 <div class="widget">
                   <h4 class="widget-title">Useful Links</h4>
-                  <!-- End .widget-title -->
 
                   <ul class="widget-list">
-                    <li><a href="/about">About Molla</a></li>
-                    <li><a href="#">How to shop on Molla</a></li>
+                    <li><a href="/about">About Spy.steps</a></li>
+                    <li><a href="#">How to shop on Spy.steps</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="/contact">Contact us</a></li>
                     <li><a href="/login">Log in</a></li>
                   </ul>
-                  <!-- End .widget-list -->
                 </div>
-                <!-- End .widget -->
               </div>
-              <!-- End .col-sm-6 col-lg-3 -->
 
               <div class="col-sm-6 col-lg-3">
                 <div class="widget">
                   <h4 class="widget-title">Customer Service</h4>
-                  <!-- End .widget-title -->
 
                   <ul class="widget-list">
                     <li><a href="#">Payment Methods</a></li>
@@ -916,16 +850,12 @@
                     <li><a href="#">Terms and conditions</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                   </ul>
-                  <!-- End .widget-list -->
                 </div>
-                <!-- End .widget -->
               </div>
-              <!-- End .col-sm-6 col-lg-3 -->
 
               <div class="col-sm-6 col-lg-3">
                 <div class="widget">
                   <h4 class="widget-title">My Account</h4>
-                  <!-- End .widget-title -->
 
                   <ul class="widget-list">
                     <li><a href="/login">Sign In</a></li>
@@ -934,24 +864,17 @@
                     <li><a href="#">Track My Order</a></li>
                     <li><a href="#">Help</a></li>
                   </ul>
-                  <!-- End .widget-list -->
                 </div>
-                <!-- End .widget -->
               </div>
-              <!-- End .col-sm-6 col-lg-3 -->
             </div>
-            <!-- End .row -->
           </div>
-          <!-- End .container -->
         </div>
-        <!-- End .footer-middle -->
 
         <div class="footer-bottom">
           <div class="container">
             <p class="footer-copyright">
               Copyright © <script>document.write(new Date().getFullYear());</script> Spy.steps Store. All Rights Reserved.
             </p>
-            <!-- End .footer-copyright -->
             <figure class="footer-payments">
               <img
                 src="assets/images/payments.png"
@@ -960,22 +883,15 @@
                 height="20"
               />
             </figure>
-            <!-- End .footer-payments -->
           </div>
-          <!-- End .container -->
         </div>
-        <!-- End .footer-bottom -->
       </footer>
-      <!-- End .footer -->
     </div>
-    <!-- End .page-wrapper -->
     <button id="scroll-top" style="border-radius: 50%;background-color: rgba(255, 255, 255, 0.294);" title="Back to Top">
       <i class="icon-arrow-up"></i>
     </button>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div>
-    <!-- End .mobil-menu-overlay -->
 
     <div class="mobile-menu-container">
       <div class="mobile-menu-wrapper">
@@ -1023,7 +939,6 @@
             </li>
           </ul>
         </nav>
-        <!-- End .mobile-nav -->
 
         <div class="social-icons">
           <a href="#" class="social-icon" target="_blank" title="Facebook"
@@ -1039,11 +954,8 @@
             ><i class="icon-youtube"></i
           ></a>
         </div>
-        <!-- End .social-icons -->
       </div>
-      <!-- End .mobile-menu-wrapper -->
     </div>
-    <!-- End .mobile-menu-container -->    
 
     <!-- <script>
       const addToCart = async(productId)=>{
@@ -1164,6 +1076,5 @@
     <script src="assets/js/main.js"></script>
   </body>
 
-  <!-- molla/product-sidebar.html  22 Nov 2019 10:03:37 GMT -->
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

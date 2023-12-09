@@ -265,7 +265,7 @@ const loadOrderChart = async (req,res) => {
             key: "rzp_test_NT5lfbdTihBLLO", // Enter the Key ID generated from the Dashboard
             amount: remainingAmount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
-            name: "Molla",
+            name: "SpySteps",
             description: "Clothing Accessories Store",
             image: "",
             order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -628,7 +628,7 @@ radioButtons.forEach(radioButton => {
               key: "rzp_test_NT5lfbdTihBLLO",
               amount: updatedTotalAmount * 100,
               currency: "INR",
-              name: "MOLLA",
+              name: "SpySteps",
               description: "Clothing Accessories Store",
               image: "",
               order_id: orderId,
